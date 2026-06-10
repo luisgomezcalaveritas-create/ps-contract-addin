@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<OfficeApp
-  xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
-  xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
-  xsi:type="TaskPaneApp">
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+           xsi:type="TaskPaneApp">
 
-  <Id>12345678-1234-1234-1234-123456789012</Id>
-  <Version>1.0.0.0</Version>
-  <ProviderName>Adobe</ProviderName>
+  <Id>a4b5c6d7-e8f9-4012-bcde-f01234567890</Id>
+  <Version>1.0.0.1</Version>
+  <ProviderName>Adobe PS</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
+
   <DisplayName DefaultValue="PS Contract Review"/>
-  <Description DefaultValue="Adobe PS AI Contract Review Assistant powered by Claude."/>
+  <Description DefaultValue="Adobe Professional Services AI Contract Review Assistant powered by Claude."/>
+
   <IconUrl DefaultValue="https://luisgomezcalaveritas-create.github.io/ps-contract-addin/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://luisgomezcalaveritas-create.github.io/ps-contract-addin/icon-80.png"/>
-  <SupportUrl DefaultValue="https://www.adobe.com"/>
+  <HighResolutionIconUrl DefaultValue="https://luisgomezcalaveritas-create.github.io/ps-contract-addin/icon-32.png"/>
+  <SupportUrl DefaultValue="https://luisgomezcalaveritas-create.github.io/ps-contract-addin/"/>
+
+  <Hosts>
+    <Host Name="Word"/>
+  </Hosts>
 
   <AppDomains>
     <AppDomain>https://luisgomezcalaveritas-create.github.io</AppDomain>
-    <AppDomain>https://api.anthropic.com</AppDomain>
   </AppDomains>
-
-  <Hosts>
-    <Host Name="Document"/>
-  </Hosts>
 
   <DefaultSettings>
     <SourceLocation DefaultValue="https://luisgomezcalaveritas-create.github.io/ps-contract-addin/taskpane.html"/>
@@ -31,39 +31,29 @@
 
   <Permissions>ReadWriteDocument</Permissions>
 
-  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+                    xsi:type="VersionOverridesV1_0">
     <Hosts>
-      <Host xsi:type="Document">
+      <Host xsi:type="Word">
         <DesktopFormFactor>
-          <GetStarted>
-            <Title resid="GetStarted.Title"/>
-            <Description resid="GetStarted.Description"/>
-            <LearnMoreUrl resid="GetStarted.LearnMoreUrl"/>
-          </GetStarted>
-          <FunctionFile resid="Commands.Url"/>
           <ExtensionPoint xsi:type="PrimaryCommandSurface">
             <OfficeTab id="TabHome">
-              <Group id="CommandsGroup">
-                <Label resid="CommandsGroup.Label"/>
-                <Icon>
-                  <bt:Image size="16" resid="Icon.16x16"/>
-                  <bt:Image size="32" resid="Icon.32x32"/>
-                  <bt:Image size="80" resid="Icon.80x80"/>
-                </Icon>
-                <Control xsi:type="Button" id="TaskpaneButton">
-                  <Label resid="TaskpaneButton.Label"/>
+              <Group id="grpAdobePS">
+                <Label resid="grpLabel"/>
+                <Control xsi:type="Button" id="btnReviewContract">
+                  <Label resid="btnLabel"/>
                   <Supertip>
-                    <Title resid="TaskpaneButton.Label"/>
-                    <Description resid="TaskpaneButton.Tooltip"/>
+                    <Title resid="btnLabel"/>
+                    <Description resid="btnDesc"/>
                   </Supertip>
                   <Icon>
-                    <bt:Image size="16" resid="Icon.16x16"/>
-                    <bt:Image size="32" resid="Icon.32x32"/>
-                    <bt:Image size="80" resid="Icon.80x80"/>
+                    <bt:Image size="16" resid="icon16"/>
+                    <bt:Image size="32" resid="icon32"/>
+                    <bt:Image size="80" resid="icon80"/>
                   </Icon>
                   <Action xsi:type="ShowTaskpane">
-                    <TaskpaneId>ButtonId1</TaskpaneId>
-                    <SourceLocation resid="Taskpane.Url"/>
+                    <TaskpaneId>AdobePSPane</TaskpaneId>
+                    <SourceLocation resid="taskpaneUrl"/>
                   </Action>
                 </Control>
               </Group>
@@ -72,26 +62,25 @@
         </DesktopFormFactor>
       </Host>
     </Hosts>
+
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16x16" DefaultValue="https://luisgomezcalaveritas-create.github.io/ps-contract-addin/icon-32.png"/>
-        <bt:Image id="Icon.32x32" DefaultValue="https://luisgomezcalaveritas-create.github.io/ps-contract-addin/icon-32.png"/>
-        <bt:Image id="Icon.80x80" DefaultValue="https://luisgomezcalaveritas-create.github.io/ps-contract-addin/icon-80.png"/>
+        <bt:Image id="icon16" DefaultValue="https://luisgomezcalaveritas-create.github.io/ps-contract-addin/icon-32.png"/>
+        <bt:Image id="icon32" DefaultValue="https://luisgomezcalaveritas-create.github.io/ps-contract-addin/icon-32.png"/>
+        <bt:Image id="icon80" DefaultValue="https://luisgomezcalaveritas-create.github.io/ps-contract-addin/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://www.adobe.com"/>
-        <bt:Url id="Commands.Url" DefaultValue="https://luisgomezcalaveritas-create.github.io/ps-contract-addin/commands.html"/>
-        <bt:Url id="Taskpane.Url" DefaultValue="https://luisgomezcalaveritas-create.github.io/ps-contract-addin/taskpane.html"/>
+        <bt:Url id="taskpaneUrl" DefaultValue="https://luisgomezcalaveritas-create.github.io/ps-contract-addin/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
-        <bt:String id="GetStarted.Title" DefaultValue="PS Contract Review Assistant"/>
-        <bt:String id="CommandsGroup.Label" DefaultValue="Adobe PS"/>
-        <bt:String id="TaskpaneButton.Label" DefaultValue="Review Contract"/>
+        <bt:String id="grpLabel" DefaultValue="Adobe PS"/>
+        <bt:String id="btnLabel" DefaultValue="Review Contract"/>
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="GetStarted.Description" DefaultValue="Adobe PS AI Contract Review Assistant — analyse contracts across legal, revenue, compliance and more."/>
-        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Open the Adobe PS AI Contract Review Assistant."/>
+        <bt:String id="btnDesc" DefaultValue="Analyse this contract with Adobe PS AI across legal, revenue, compliance, tax, IP and more."/>
       </bt:LongStrings>
     </Resources>
+
   </VersionOverrides>
+
 </OfficeApp>
